@@ -17,7 +17,7 @@ FIRSTRUN = True
 if (Path.cwd()/ DBNAME).exists():
     FIRSTRUN = False
 
-UPLOADFOLDER = '/path/to/folder/CSE2190-IA/Product' # change this to your own file route 
+UPLOADFOLDER = 'C:/your/path/to/folder/CSE2190-IA/Product' # change this to your own file route 
 ALLOWEDEXTENSIONS = {'csv', 'txt'}
 DATAHEADINGS = []
 DATACOLUMNS = []
