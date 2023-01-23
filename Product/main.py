@@ -146,7 +146,7 @@ def checkName(NAME) -> bool:
     CURSOR = CONNECTION.cursor()
 
     try:
-        CURSOR.execute(f"""
+        WAGE = CURSOR.execute(f"""
             SELECT
                 percent_wages
             FROM
@@ -154,7 +154,10 @@ def checkName(NAME) -> bool:
             WHERE
                 member_name = ?;
         """, [NAME]).fetchone()
-        return True
+        if checkFloat(WAGE[0]):
+            return True
+        else:
+            return False
     except TypeError:
         return False
 
