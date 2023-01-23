@@ -12,7 +12,7 @@ import sqlite3
 ### VARIABLES ###
 DBNAME = "wages_calculator.db"
 
-# if replacing data, you will need to delete all database files, csv files, and txt files
+# if replacing data, you will need to delete all database files, csv files, and txt files before rerunning
 FIRSTRUN = True
 if (Path.cwd()/ DBNAME).exists():
     FIRSTRUN = False
