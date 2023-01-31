@@ -65,17 +65,20 @@ def index():
 
             TOTALFILENAME = secure_filename(TOTALFILE.filename)
             TOTALFILE.save(os.path.join(app.config['UPLOADFOLDER'], TOTALFILENAME))
-            # outputs # 
-            ALERT = "All files have been uploaded!"
             if FIRSTRUN:
-                print((app.config['UPLOADFOLDER'], REGULARFILENAME))
-                REGULARDATA, OVERTIMEDATA, SUMMARYDATA, TOTALDATA, PRODUCTIONDATA, SALESDATA = extractFiles(REGULARFILENAME, TOTALFILENAME, OVERTIMEFILENAME, SUMMARYFILENAME, PRODUCTIONFILENAME, SALESFILENAME)
-                setupDatabase(REGULARDATA, OVERTIMEDATA, SUMMARYDATA, TOTALDATA, PRODUCTIONDATA, SALESDATA)
-                TOTALWAGES = calculateWages()
-                wageDatabase(TOTALWAGES)
-                global DATAHEADINGS, DATACOLUMNS
-                DATAHEADINGS, DATACOLUMNS = getMemberData(REGULARDATA, OVERTIMEDATA, PRODUCTIONDATA, SALESDATA, TOTALWAGES)
-                FIRSTRUN = False
+                try:
+                    REGULARDATA, OVERTIMEDATA, SUMMARYDATA, TOTALDATA, PRODUCTIONDATA, SALESDATA = extractFiles(REGULARFILENAME, TOTALFILENAME, OVERTIMEFILENAME, SUMMARYFILENAME, PRODUCTIONFILENAME, SALESFILENAME)
+                    setupDatabase(REGULARDATA, OVERTIMEDATA, SUMMARYDATA, TOTALDATA, PRODUCTIONDATA, SALESDATA)
+                    TOTALWAGES = calculateWages()
+                    wageDatabase(TOTALWAGES)
+                    global DATAHEADINGS, DATACOLUMNS
+                    DATAHEADINGS, DATACOLUMNS = getMemberData(REGULARDATA, OVERTIMEDATA, PRODUCTIONDATA, SALESDATA, TOTALWAGES)
+                    FIRSTRUN = False
+                    ALERT = "All files have been uploaded!"
+                except:
+                    ALERT = "An error has occured. Please rerun program and again. "
+        else:
+            ALERT = "Please only select .csv or .txt files!"
     return render_template("index.html", alert=ALERT)
 
 @app.route("/data.html", methods=["GET", "POST"])
