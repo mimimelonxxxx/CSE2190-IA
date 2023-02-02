@@ -633,14 +633,14 @@ def queryWages(NAME) -> None:
     CONNECTION = sqlite3.connect(DBNAME)
     CURSOR = CONNECTION.cursor()
     
-    WAGE = CURSOR.execute(f"""
+    WAGE = CURSOR.execute("""
         SELECT
             percent_wages
         FROM
             wages
         WHERE
-            member_name = "{NAME}";
-    """).fetchone()
+            member_name = ?;
+    """, [NAME]).fetchone()
 
     return WAGE[0]
 
