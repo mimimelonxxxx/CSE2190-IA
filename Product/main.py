@@ -76,7 +76,7 @@ def index():
                     FIRSTRUN = False
                     ALERT = "All files have been uploaded!"
                 except:
-                    ALERT = "An error has occured. Please rerun program and again. "
+                    ALERT = "An error has occured. Please rerun program and try again. "
         else:
             ALERT = "Please only select .csv or .txt files!"
     return render_template("index.html", alert=ALERT)
