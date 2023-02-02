@@ -45,7 +45,7 @@ def index():
         # processing # 
         if REGULARFILE.filename == '' or OVERTIMEFILE.filename == "" or SALESFILE.filename == "" or PRODUCTIONFILE.filename == "" or SUMMARYFILE.filename == "" or TOTALFILE.filename == "":
             ALERT = "Please select all files!"
-        elif allowed_file(REGULARFILE.filename) and allowed_file(OVERTIMEFILE.filename) and allowed_file(SALESFILE.filename) and allowed_file(PRODUCTIONFILE.filename) and allowed_file(SUMMARYFILE.filename) and allowed_file(TOTALFILE.filename):
+        elif allowedFile(REGULARFILE.filename) and allowedFile(OVERTIMEFILE.filename) and allowedFile(SALESFILE.filename) and allowedFile(PRODUCTIONFILE.filename) and allowedFile(SUMMARYFILE.filename) and allowedFile(TOTALFILE.filename):
             
             # checks if all files have been selected and uploads files 
             REGULARFILENAME = secure_filename(REGULARFILE.filename)
