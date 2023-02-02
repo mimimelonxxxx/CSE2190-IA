@@ -17,7 +17,7 @@ FIRSTRUN = True
 if (Path.cwd()/ DBNAME).exists():
     FIRSTRUN = False
 
-UPLOADFOLDER = 'C:/your/file/path/CSE2190-IA/Product/' # change this to your own file route 
+UPLOADFOLDER = 'C:/Users/cryst/.vscode/CSE2190-IA/Product/' # change this to your own file route 
 ALLOWEDEXTENSIONS = {'csv', 'txt'}
 DATAHEADINGS = []
 DATACOLUMNS = []
@@ -123,7 +123,10 @@ def member():
     return render_template("member.html", alert=ALERT)
 
 ### FUNCTIONS ### 
-def allowed_file(FILENAME):
+def allowedFile(FILENAME):
+    """
+    checks if file extension is allowed 
+    """
     return '.' in FILENAME and \
            FILENAME.rsplit('.', 1)[1].lower() in ALLOWEDEXTENSIONS # splits the filename at the . and checks if it can be used
 
